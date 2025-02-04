@@ -1,0 +1,94 @@
+
+<!-- This is the HTML document structure -->
+<!DOCTYPE html>
+<!-- Start of the webpage, language is English -->
+<html lang="en">
+<head>
+    <!-- Set character encoding to support different text symbols -->
+    <meta charset="UTF-8">
+    <!-- Make sure webpage looks good on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title that appears on browser tab -->
+    <title>UX Persona - Student Example</title>
+    <style>
+        /* Set font style and make content centered on the page */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Make sure content is in center of screen */
+            background-color: #f5f5f5; /* Light gray background */
+        }
+        /* Style for persona card, add padding, border, and shadow */
+        .persona-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px; /* Set width for better display */
+        }
+        /* Unordered list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- This is the box where persona information is shown -->
+    <div class="persona-card">
+        <!-- Shows persona name here, JavaScript will change it -->
+        <h2 id="persona-name"> Hi </h2>
+        <!-- Shows persona's age, JavaScript will change it -->
+        <p><strong>Age:</strong> <span id="persona-age">[Age]</span></p>
+        <!-- Section for listing skills of the persona -->
+        <p><strong>Skills:</strong></p>
+        <ul id="persona-skills">
+            <!-- JavaScript will add skills here -->
+        </ul>
+    </div>
+    <script>
+        // Create an object that represents a UX student persona
+        let userPersona = {
+            name: "John, the UX Student", // Set persona name
+            age: 22, // Set persona age
+            skills: ["Wireframing", "Prototyping", "User Research"], // List of skills
+            // Function to introduce the persona with name and skills
+            introduce: function() {
+                return `I'm ${this.name} and I specialize in ${this.skills.join(", ")}.`;
+            }
+        };
+
+        // Another UX student persona for comparison
+        let userPersona2 = {
+            name: "Alex, the UX Learner", // Different persona name
+            age: 24, // Different age
+            skills: ["UI Design", "User Testing"], // Different skills
+            // Function to introduce second persona
+            introduce: function() {
+                return `I'm ${this.name} and I specialize in ${this.skills.join(", ")}.`;
+            }
+        };
+
+        // Change the HTML content to show first persona’s details
+        document.getElementById("persona-name").innerText = userPersona.name;
+        document.getElementById("persona-age").innerText = userPersona.age;
+        
+        // Get the list element for skills
+        let skillList = document.getElementById("persona-skills");
+        
+        // Loop through skills and add them to the list
+        for (let i = 0; i < userPersona.skills.length; i++) {
+            let listItem = document.createElement("li"); // Create a new list item
+            listItem.textContent = `- ${userPersona.skills[i]}`; // Add text to list item
+            skillList.appendChild(listItem); // Add list item to the skill list
+        }
+
+        // Print introductions of both personas in the console
+        console.log(userPersona.introduce());
+        console.log(userPersona2.introduce());
+    </script>
+</body>
+</html>
